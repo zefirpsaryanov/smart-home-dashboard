@@ -208,6 +208,13 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.camera-stream {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .camera-placeholder {
@@ -222,6 +229,18 @@ input:checked + .slider:before {
 
 .camera-placeholder small {
     color: #555;
+}
+
+.camera-error {
+    color: #ff6b6b;
+    text-align: center;
+    padding: 20px;
+}
+
+.camera-loading {
+    color: #a0a0a0;
+    text-align: center;
+    padding: 20px;
 }
 
 #tempChart {

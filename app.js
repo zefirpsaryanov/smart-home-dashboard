@@ -183,6 +183,36 @@ function drawChart() {
     ctx.fillText('Навън', canvas.width - 130, legendY + 52);
 }
 
+function initCameras() {
+    if (typeof cameraConfig === 'undefined') {
+        console.log('Camera config not found');
+        return;
+    }
+
+    cameraConfig.cameras.forEach(camera => {
+        if (camera.enabled) {
+            const imgElement = document.getElementById(`camera${camera.id}Stream`);
+            const cameraView = document.getElementById(`camera${camera.id}`);
+
+            if (imgElement) {
+                const mjpegUrl = getMjpegUrl(camera.id);
+
+                imgElement.onerror = function() {
+                    cameraView.innerHTML = '<div class="camera-error">Грешка при зареждане на камерата<br><small>Проверете IP адреса и достъпа до XVR</small></div>';
+                    console.error(`Camera ${camera.id} failed to load from ${mjpegUrl}`);
+                };
+
+                imgElement.onload = function() {
+                    console.log(`Camera ${camera.id} loaded successfully`);
+                };
+
+                imgElement.src = mjpegUrl;
+                console.log(`Camera ${camera.id}: ${mjpegUrl}`);
+            }
+        }
+    });
+}
+
 function init() {
     loadLights();
     updateTime();
@@ -192,6 +222,7 @@ function init() {
     setInterval(updateSensors, 5000);
 
     initChart();
+    initCameras();
 
     console.log('Smart Home Dashboard initialized');
     console.log('API endpoints ready for ESP8266/ESP32');

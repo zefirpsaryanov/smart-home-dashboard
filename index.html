@@ -79,12 +79,16 @@
             </div>
 
             <div class="card camera-card">
-                <h2>📹 Камера - Вход</h2>
-                <div class="camera-view" id="cameraView">
-                    <div class="camera-placeholder">
-                        <p>Камерата не е свързана</p>
-                        <small>Добави MJPEG URL в настройките</small>
-                    </div>
+                <h2>📹 Камера 1 - Вход</h2>
+                <div class="camera-view" id="camera1">
+                    <img id="camera1Stream" class="camera-stream" alt="Camera 1">
+                </div>
+            </div>
+
+            <div class="card camera-card">
+                <h2>📹 Камера 2</h2>
+                <div class="camera-view" id="camera2">
+                    <img id="camera2Stream" class="camera-stream" alt="Camera 2">
                 </div>
             </div>
 
@@ -106,6 +110,7 @@
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
