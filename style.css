@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 2em;
+    color: #fff;
+}
+
+.time {
+    font-size: 1.2em;
+    color: #a0a0a0;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.weather-card .temp {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffa500;
+    margin-bottom: 10px;
+}
+
+.weather-desc {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+}
+
+.humidity {
+    color: #888;
+}
+
+.light-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-item:last-of-type {
+    border-bottom: none;
+}
+
+.light-item span {
+    font-size: 1.1em;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+.brightness-control {
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.brightness-control input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #555;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.brightness-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.brightness-control input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.brightness-value {
+    color: #a0a0a0;
+    font-size: 0.9em;
+}
+
+.sensor-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sensor-item:last-child {
+    border-bottom: none;
+}
+
+.sensor-name {
+    color: #b0b0b0;
+}
+
+.sensor-value {
+    font-weight: bold;
+    color: #00bfff;
+    font-size: 1.2em;
+}
+
+.camera-view {
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-placeholder {
+    text-align: center;
+    color: #666;
+}
+
+.camera-placeholder p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.camera-placeholder small {
+    color: #555;
+}
+
+#tempChart {
+    width: 100%;
+    height: 200px;
+}
+
+.api-info {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.api-info p {
+    margin-bottom: 10px;
+    color: #b0b0b0;
+}
+
+.api-info code {
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}

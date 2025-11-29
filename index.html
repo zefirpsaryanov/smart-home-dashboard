@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏠 Smart Home</h1>
+            <div class="time" id="currentTime"></div>
+        </header>
+
+        <div class="dashboard">
+            <div class="card weather-card">
+                <h2>🌤️ Времето</h2>
+                <div class="weather-info">
+                    <div class="temp" id="temperature">22°C</div>
+                    <div class="weather-desc" id="weatherDesc">Слънчево</div>
+                    <div class="humidity">Влажност: <span id="humidity">65%</span></div>
+                </div>
+            </div>
+
+            <div class="card lights-card">
+                <h2>💡 Осветление</h2>
+                <div class="light-item">
+                    <span>Хол</span>
+                    <label class="switch">
+                        <input type="checkbox" id="light1" onchange="toggleLight(1, this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="brightness-control" id="brightness1" style="display: none;">
+                    <input type="range" min="0" max="100" value="100" oninput="setBrightness(1, this.value)">
+                    <span class="brightness-value">100%</span>
+                </div>
+
+                <div class="light-item">
+                    <span>Спалня</span>
+                    <label class="switch">
+                        <input type="checkbox" id="light2" onchange="toggleLight(2, this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="brightness-control" id="brightness2" style="display: none;">
+                    <input type="range" min="0" max="100" value="100" oninput="setBrightness(2, this.value)">
+                    <span class="brightness-value">100%</span>
+                </div>
+
+                <div class="light-item">
+                    <span>Кухня</span>
+                    <label class="switch">
+                        <input type="checkbox" id="light3" onchange="toggleLight(3, this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="brightness-control" id="brightness3" style="display: none;">
+                    <input type="range" min="0" max="100" value="100" oninput="setBrightness(3, this.value)">
+                    <span class="brightness-value">100%</span>
+                </div>
+            </div>
+
+            <div class="card sensors-card">
+                <h2>🌡️ Сензори</h2>
+                <div class="sensor-item">
+                    <span class="sensor-name">Хол</span>
+                    <span class="sensor-value" id="sensor1">22.5°C</span>
+                </div>
+                <div class="sensor-item">
+                    <span class="sensor-name">Спалня</span>
+                    <span class="sensor-value" id="sensor2">21.8°C</span>
+                </div>
+                <div class="sensor-item">
+                    <span class="sensor-name">Навън</span>
+                    <span class="sensor-value" id="sensor3">18.3°C</span>
+                </div>
+            </div>
+
+            <div class="card camera-card">
+                <h2>📹 Камера - Вход</h2>
+                <div class="camera-view" id="cameraView">
+                    <div class="camera-placeholder">
+                        <p>Камерата не е свързана</p>
+                        <small>Добави MJPEG URL в настройките</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <h2>📊 Температура (24ч)</h2>
+                <canvas id="tempChart"></canvas>
+            </div>
+
+            <div class="card settings-card">
+                <h2>⚙️ API Настройки</h2>
+                <div class="api-info">
+                    <p><strong>ESP8266/ESP32 Endpoints:</strong></p>
+                    <code>GET /api/lights</code>
+                    <code>POST /api/lights/:id {"state": true, "brightness": 80}</code>
+                    <code>POST /api/sensors {"temp": 22.5, "location": "hall"}</code>
+                    <code>GET /api/camera (MJPEG stream)</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
