@@ -217,6 +217,12 @@ input:checked + .slider:before {
     object-fit: contain;
     display: block;
     background: #000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.camera-stream.loaded {
+    opacity: 1;
 }
 
 .camera-placeholder {

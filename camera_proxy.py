@@ -22,7 +22,7 @@ class CameraProxyHandler(http.server.BaseHTTPRequestHandler):
             query = parse_qs(urlparse(self.path).query)
             channel = query.get('channel', ['1'])[0]
 
-            camera_url = f'http://192.168.10.4:88/cgi-bin/snapshot.cgi?channel={channel}'
+            camera_url = f'http://192.168.10.4:88/cgi-bin/snapshot.cgi?channel={channel}&subtype=0'
 
             try:
                 with cache_lock:

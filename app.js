@@ -197,6 +197,7 @@ function updateCameraSnapshot(cameraId) {
         };
 
         imgElement.onload = function() {
+            imgElement.classList.add('loaded');
             console.log(`Camera ${cameraId} snapshot updated`);
         };
 
