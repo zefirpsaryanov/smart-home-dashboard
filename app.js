@@ -219,7 +219,7 @@ function initCameras() {
 
             setInterval(() => {
                 updateCameraSnapshot(camera.id);
-            }, 1000);
+            }, 2000);
         }
     });
 }
